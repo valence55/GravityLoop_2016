@@ -37,5 +37,7 @@ public class OI {
 	
 	public Joystick joyDriverLeft = new Joystick(0);
 	public Joystick joyDriverRight = new Joystick(1);
+	
+	public Joystick joySecondary = new Joystick(2);
 }
 
