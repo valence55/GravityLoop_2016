@@ -6,8 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team5004.robot.commands.ArmJoystick;
-import org.usfirst.frc.team5004.robot.commands.LiftJoystick;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
 import org.usfirst.frc.team5004.robot.subsystems.Arm;
 import org.usfirst.frc.team5004.robot.subsystems.Drivetrain;
