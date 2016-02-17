@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team5004.robot.commands.ToolSelect;
 import org.usfirst.frc.team5004.robot.commands.ArmJoystick;
 import org.usfirst.frc.team5004.robot.commands.LiftJoystick;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
@@ -32,9 +31,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
-    Command liftCommand = new LiftJoystick();
-    Command armCommand = new ArmJoystick();
-    //Command ToolSelect = new ToolSelect();
     SendableChooser chooser;
 
     /**
