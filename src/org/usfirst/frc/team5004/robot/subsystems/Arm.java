@@ -25,6 +25,10 @@ public class Arm extends Subsystem {
 		//set motor speed to joystick value
 		m.set(joystick.getY());
 	}
+	
+	public void stop(){
+		m.set(0.0);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

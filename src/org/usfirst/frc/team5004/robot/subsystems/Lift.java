@@ -33,6 +33,10 @@ public class Lift extends Subsystem {
 		//set motor speed to joystick value
 		m1.set(joystick.getY());
 	}
+	
+	public void stop(){
+		m1.set(0.0);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -1,7 +1,10 @@
 package org.usfirst.frc.team5004.robot;
 
+import org.usfirst.frc.team5004.robot.commands.ToolSelect;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -39,5 +42,11 @@ public class OI {
 	public Joystick joyDriverRight = new Joystick(1);
 	
 	public Joystick joySecondary = new Joystick(2);
+	
+	public JoystickButton toolSelector = new JoystickButton(joySecondary, 1);
+	
+	public OI(){
+		toolSelector.whenPressed(new ToolSelect());
+	}
 }
 

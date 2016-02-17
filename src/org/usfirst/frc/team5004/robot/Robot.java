@@ -5,8 +5,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team5004.robot.commands.ToolSelect;
+import org.usfirst.frc.team5004.robot.commands.ArmJoystick;
+import org.usfirst.frc.team5004.robot.commands.LiftJoystick;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
+import org.usfirst.frc.team5004.robot.subsystems.Arm;
 import org.usfirst.frc.team5004.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team5004.robot.subsystems.Lift;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -20,9 +27,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final Drivetrain drive = new Drivetrain();
+	public static final Lift lift = new Lift();
+	public static final Arm arm = new Arm();
 	public static OI oi;
 
     Command autonomousCommand;
+    Command liftCommand = new LiftJoystick();
+    Command armCommand = new ArmJoystick();
+    //Command ToolSelect = new ToolSelect();
     SendableChooser chooser;
 
     /**
