@@ -18,8 +18,8 @@ public class Drivetrain extends Subsystem {
     // here. Call these from Commands.
 	
 	//local variables for joysticks
-	Joystick joyLeft = Robot.oi.joyDriverLeft;
-	Joystick joyRight = Robot.oi.joyDriverRight;
+	//Joystick joyLeft = Robot.oi.joyDriverLeft;
+	//Joystick joyRight = Robot.oi.joyDriverRight;
 	
 	//initialize motor controllers from port numbers
 	CANTalon l1 = new CANTalon(RobotMap.leftMotor1);
@@ -39,8 +39,13 @@ public class Drivetrain extends Subsystem {
 
 	public void tankDrive(){
 		//set motor speeds to joystick values
-		r1.set(joyLeft.getY());
-		r2.set(joyRight.getY());
+		l1.set(-Robot.oi.joyDriverLeft.getY());
+		r1.set(Robot.oi.joyDriverRight.getY());
+	}
+	
+	public void drive(double l, double r){
+		l1.set(l);
+		r1.set(r);
 	}
 	
     public void initDefaultCommand() {

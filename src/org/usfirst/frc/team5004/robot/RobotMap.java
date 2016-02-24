@@ -17,17 +17,17 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	//the two motors on the left side of the drivetrain
-	public static int leftMotor1 = 1;
-	public static int leftMotor2 = 2;
+	public static int leftMotor1 = 0;
+	public static int leftMotor2 = 1;
 	
 	//the two motors on the right side of the drivetrain
-	public static int rightMotor1 = 3;
-	public static int rightMotor2 = 4;
+	public static int rightMotor1 = 2;
+	public static int rightMotor2 = 3;
 	
 	//the two motors on the lift mechanism
-	public static int liftMotor1 = 5;
-	public static int liftMotor2 = 6;
+	public static int liftMotor1 = 4;
+	public static int liftMotor2 = 5;
 	
 	//the motor for the door opener thing
-	public static int armMotor = 7;
+	public static int armMotor = 6;
 }

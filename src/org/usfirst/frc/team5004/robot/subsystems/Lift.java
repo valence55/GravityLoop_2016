@@ -17,7 +17,7 @@ public class Lift extends Subsystem {
     // here. Call these from Commands.
 	
 	//local variables for joysticks
-	Joystick joystick = Robot.oi.joySecondary;
+	//Joystick joystick = Robot.oi.joySecondary;
 	
 	//initialize motor controllers from port numbers
 	CANTalon m1 = new CANTalon(RobotMap.liftMotor1);
@@ -31,7 +31,7 @@ public class Lift extends Subsystem {
 	
 	public void joystickControl(){
 		//set motor speed to joystick value
-		m1.set(joystick.getY());
+		m1.set(Robot.oi.joySecondary.getY());
 	}
 	
 	public void stop(){

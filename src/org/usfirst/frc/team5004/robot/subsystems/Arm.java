@@ -16,14 +16,14 @@ public class Arm extends Subsystem {
     // here. Call these from Commands.
 	
 	//local variables for joysticks
-	Joystick joystick = Robot.oi.joySecondary;
+	//Joystick joystick = Robot.oi.joySecondary;
 	
 	//initialize motor controllers from port numbers
 	CANTalon m = new CANTalon(RobotMap.armMotor);
 	
 	public void joystickControl(){
 		//set motor speed to joystick value
-		m.set(joystick.getY());
+		m.set(Robot.oi.joySecondary.getY());
 	}
 	
 	public void stop(){

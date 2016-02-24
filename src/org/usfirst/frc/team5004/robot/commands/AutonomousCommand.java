@@ -2,21 +2,25 @@ package org.usfirst.frc.team5004.robot.commands;
 
 import org.usfirst.frc.team5004.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LiftJoystick extends Command {
+public class AutonomousCommand extends Command {
 
-    public LiftJoystick() {
+    public AutonomousCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.lift);
+    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drive.drive(0.5, -0.5);
+    	Timer.delay(0.5);
+    	Robot.drive.drive(0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run

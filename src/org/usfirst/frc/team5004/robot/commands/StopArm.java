@@ -12,12 +12,12 @@ public class StopArm extends Command {
     public StopArm() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm);
+    	//requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.stop();
+    	//Robot.arm.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run

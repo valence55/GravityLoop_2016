@@ -6,6 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+import org.usfirst.frc.team5004.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
 import org.usfirst.frc.team5004.robot.subsystems.Arm;
 import org.usfirst.frc.team5004.robot.subsystems.Drivetrain;
@@ -36,9 +41,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	System.out.println("init");
+    	
 		oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new TankDrive());
+        chooser.addDefault("Default Auto", new AutonomousCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }
