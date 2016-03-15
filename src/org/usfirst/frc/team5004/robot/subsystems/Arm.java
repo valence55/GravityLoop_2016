@@ -6,11 +6,19 @@ import org.usfirst.frc.team5004.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
  */
 public class Arm extends Subsystem {
+	
+	public Arm(){
+		super();
+		
+		LiveWindow.addActuator("Arm", "Arm Motor", (CANTalon) m);
+
+	}
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -24,6 +32,10 @@ public class Arm extends Subsystem {
 	public void joystickControl(){
 		//set motor speed to joystick value
 		m.set(Robot.oi.joySecondary.getY());
+	}
+	
+	public void drive(double i){
+		m.set(i);
 	}
 	
 	public void stop(){

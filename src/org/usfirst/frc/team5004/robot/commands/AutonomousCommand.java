@@ -19,7 +19,7 @@ public class AutonomousCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drive.drive(0.5, -0.5);
-    	Timer.delay(0.5);
+    	Timer.delay(5.0);
     	Robot.drive.drive(0.0, 0.0);
     }
 

@@ -10,9 +10,13 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import org.usfirst.frc.team5004.robot.commands.ArmJoystick;
 import org.usfirst.frc.team5004.robot.commands.AutonomousCommand;
+import org.usfirst.frc.team5004.robot.commands.CameraFeed;
+import org.usfirst.frc.team5004.robot.commands.LiftJoystick;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
 import org.usfirst.frc.team5004.robot.subsystems.Arm;
+import org.usfirst.frc.team5004.robot.subsystems.Camera;
 import org.usfirst.frc.team5004.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5004.robot.subsystems.Lift;
 
@@ -31,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static final Drivetrain drive = new Drivetrain();
 	public static final Lift lift = new Lift();
 	public static final Arm arm = new Arm();
+	public static final Camera camera = new Camera();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -48,6 +53,12 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new AutonomousCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        
+        SmartDashboard.putData(drive);
+        SmartDashboard.putData(lift);
+        SmartDashboard.putData(arm);
+        
+        //camera.init();
     }
 	
 	/**
@@ -103,6 +114,12 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        Command liftCommand = new LiftJoystick();
+        //Command cameraCommand = new CameraFeed();
+        
+        liftCommand.start();
+        //cameraCommand.start();
     }
 
     /**

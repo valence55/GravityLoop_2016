@@ -1,13 +1,14 @@
 package org.usfirst.frc.team5004.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class ToolSelect extends Command {
 
-	boolean usingLift = false;
+	boolean usingLift = true;
 	boolean finished = false;
 	
     public ToolSelect() {
@@ -17,6 +18,8 @@ public class ToolSelect extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putString("actuator status:", "toggling");
+    	
     	if(usingLift){
     		Command liftStop = new StopLift();
     		Command armCommand = new ArmJoystick();
@@ -25,6 +28,7 @@ public class ToolSelect extends Command {
     		armCommand.start();
     		
     		usingLift = false;
+    		SmartDashboard.putString("actuator status:", "arm engaged");
     	}else{
     		Command armStop = new StopArm();
     		Command liftCommand = new LiftJoystick();
@@ -33,6 +37,7 @@ public class ToolSelect extends Command {
     		liftCommand.start();
     		
     		usingLift = true;
+    		SmartDashboard.putString("actuator status:", "lift engaged");
     	}
     	
     	finished = true;

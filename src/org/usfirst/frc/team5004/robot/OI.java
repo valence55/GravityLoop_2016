@@ -1,9 +1,12 @@
 package org.usfirst.frc.team5004.robot;
 
+import org.usfirst.frc.team5004.robot.commands.DisengageLatch;
+import org.usfirst.frc.team5004.robot.commands.EngageLatch;
 import org.usfirst.frc.team5004.robot.commands.ToolSelect;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -42,10 +45,14 @@ public class OI {
 	
 	public Joystick joySecondary = new Joystick(2);
 	
-	public JoystickButton toolSelector = new JoystickButton(joySecondary, 1);
-	
 	public OI(){
-		toolSelector.whenPressed(new ToolSelect());
+		SmartDashboard.putData("switch tool", new ToolSelect());
+		
+		JoystickButton latch = new JoystickButton(joySecondary, 1);
+		JoystickButton unlatch = new JoystickButton(joySecondary, 2);
+		
+		latch.whenPressed(new EngageLatch());
+		unlatch.whenPressed(new DisengageLatch());
 	}
 }
 
