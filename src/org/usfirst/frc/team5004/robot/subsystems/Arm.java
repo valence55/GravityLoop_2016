@@ -4,7 +4,6 @@ import org.usfirst.frc.team5004.robot.Robot;
 import org.usfirst.frc.team5004.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -12,7 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  *
  */
 public class Arm extends Subsystem {
-	
+    
 	public Arm(){
 		super();
 		
@@ -30,7 +29,6 @@ public class Arm extends Subsystem {
 	CANTalon m = new CANTalon(RobotMap.armMotor);
 	
 	public void joystickControl(){
-		//set motor speed to joystick value
 		m.set(Robot.oi.joySecondary.getY());
 	}
 	

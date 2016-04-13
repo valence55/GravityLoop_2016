@@ -54,6 +54,12 @@ public class Drivetrain extends Subsystem {
 		double right = 0.0;
 		int top = Robot.oi.joyDriverRight.getPOV();
 		
+		/*if(Math.abs(left - right) < 0.1){
+			double average = (left + right) / 2;
+			left = average;
+			right = average;
+		}*/
+		
 		SmartDashboard.putNumber("Top", top);
 		
 		switch(top){
@@ -96,10 +102,11 @@ public class Drivetrain extends Subsystem {
 		double throttle = Robot.oi.joyDriverLeft.getY();
 		double turn = Robot.oi.joyDriverLeft.getX();
 		
-		double left = -(throttle - turn);
-		double right = (throttle + turn);
-		
-		drive(left, right);
+		driveAngle(throttle, turn);
+	}
+	
+	public void driveAngle(double speed, double angle){
+		drive( -(speed - angle), (speed + angle) );
 	}
 	
 	public void drive(double l, double r){

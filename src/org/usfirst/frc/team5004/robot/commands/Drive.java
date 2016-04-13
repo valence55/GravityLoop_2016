@@ -8,19 +8,26 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DisengageLatch extends Command {
-	boolean done = false;
+public class Drive extends Command {
 
-    public DisengageLatch() {
+	double left;
+	double right;
+	double time;
+	boolean done;
+	
+    public Drive(double l, double r, double t) {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.latch);
+        requires(Robot.drive);
+        left = l;
+        right = r;
+        time = t;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.latch.drive(0.5);
-    	Timer.delay(0.2);
-    	Robot.latch.drive(0.0);
+    	Robot.drive.drive(left, right);
+    	Timer.delay(time);
+    	Robot.drive.drive(left, right);
     	done = true;
     }
 
@@ -35,7 +42,7 @@ public class DisengageLatch extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.latch.drive(0.0);
+    	Robot.drive.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

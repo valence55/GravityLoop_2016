@@ -1,55 +1,32 @@
 package org.usfirst.frc.team5004.robot.commands;
 
+import org.usfirst.frc.team5004.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ToolSelect extends Command {
+public class Dashboard extends Command {
 
-	boolean usingLift = false;
-	boolean finished = false;
-	
-    public ToolSelect() {
+    public Dashboard() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("actuator status:", "toggling");
-    	
-    	if(usingLift){
-    		Command liftStop = new StopLift();
-    		Command armCommand = new ArmJoystick();
-    		
-    		liftStop.start();
-    		armCommand.start();
-    		
-    		usingLift = false;
-    		SmartDashboard.putString("actuator status:", "arm engaged");
-    	}else{
-    		Command armStop = new StopArm();
-    		Command liftCommand = new LiftJoystick();
-    		
-    		armStop.start();
-    		liftCommand.start();
-    		
-    		usingLift = true;
-    		SmartDashboard.putString("actuator status:", "lift engaged");
-    	}
-    	
-    	finished = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("gyro angle", Robot.gyro.angle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;
+        return false;
     }
 
     // Called once after isFinished returns true

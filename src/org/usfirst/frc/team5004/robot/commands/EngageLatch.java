@@ -13,14 +13,14 @@ public class EngageLatch extends Command {
 
     public EngageLatch() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.arm);
+        requires(Robot.latch);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.drive(-0.3);
+    	Robot.latch.drive(-0.3);
     	Timer.delay(10);
-    	Robot.arm.drive(0.0);
+    	Robot.latch.drive(0.0);
     	done = true;
     }
 

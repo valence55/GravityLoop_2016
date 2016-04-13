@@ -11,13 +11,19 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.usfirst.frc.team5004.robot.commands.ArmJoystick;
-import org.usfirst.frc.team5004.robot.commands.AutonomousCommand;
+import org.usfirst.frc.team5004.robot.commands.AutoBasic;
+import org.usfirst.frc.team5004.robot.commands.AutoGyro;
+import org.usfirst.frc.team5004.robot.commands.AutoLowBar;
 import org.usfirst.frc.team5004.robot.commands.CameraFeed;
+import org.usfirst.frc.team5004.robot.commands.Dashboard;
 import org.usfirst.frc.team5004.robot.commands.LiftJoystick;
+import org.usfirst.frc.team5004.robot.commands.ResetGyro;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
+import org.usfirst.frc.team5004.robot.subsystems.Latch;
 import org.usfirst.frc.team5004.robot.subsystems.Arm;
 import org.usfirst.frc.team5004.robot.subsystems.Camera;
 import org.usfirst.frc.team5004.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team5004.robot.subsystems.Gyroscope;
 import org.usfirst.frc.team5004.robot.subsystems.Lift;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -34,8 +40,10 @@ public class Robot extends IterativeRobot {
 
 	public static final Drivetrain drive = new Drivetrain();
 	public static final Lift lift = new Lift();
+	public static final Latch latch = new Latch();
 	public static final Arm arm = new Arm();
 	public static final Camera camera = new Camera();
+	public static final Gyroscope gyro = new Gyroscope();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -50,12 +58,18 @@ public class Robot extends IterativeRobot {
     	
 		oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new AutonomousCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
+        chooser.addDefault("Basic Auto", new AutoBasic());
+        chooser.addObject("Gyro Auto", new AutoGyro());
+        chooser.addObject("Low Bar Auto", new AutoLowBar());
         SmartDashboard.putData("Auto mode", chooser);
+        
+        Command dash = new Dashboard();
+        
+        dash.start();
         
         SmartDashboard.putData(drive);
         SmartDashboard.putData(lift);
+        SmartDashboard.putData(latch);
         SmartDashboard.putData(arm);
         
         //camera.init();
@@ -99,6 +113,12 @@ public class Robot extends IterativeRobot {
     	
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        
+        Command dash = new Dashboard();
+        Command reset = new ResetGyro();
+        
+        dash.start();
+        reset.start();
     }
 
     /**
@@ -115,10 +135,14 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         
-        Command liftCommand = new LiftJoystick();
+        Command armCommand = new ArmJoystick();
+        Command dash = new Dashboard();
+        Command reset = new ResetGyro();
         //Command cameraCommand = new CameraFeed();
         
-        liftCommand.start();
+        armCommand.start();
+        dash.start();
+        reset.start();
         //cameraCommand.start();
     }
 

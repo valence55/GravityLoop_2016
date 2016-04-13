@@ -8,12 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommand extends Command {
+public class AutoBasic extends Command {
 
-    public AutonomousCommand() {
+    public AutoBasic() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.drive);
+        requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time

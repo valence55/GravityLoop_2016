@@ -50,7 +50,9 @@ public class OI {
 		
 		JoystickButton latch = new JoystickButton(joySecondary, 1);
 		JoystickButton unlatch = new JoystickButton(joySecondary, 2);
+		JoystickButton select = new JoystickButton(joySecondary, 11);
 		
+		select.whenPressed(new ToolSelect());
 		latch.whenPressed(new EngageLatch());
 		unlatch.whenPressed(new DisengageLatch());
 	}
