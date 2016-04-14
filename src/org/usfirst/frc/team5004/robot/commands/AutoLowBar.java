@@ -25,13 +25,13 @@ public class AutoLowBar extends Command {
     	Timer.delay(3.0);
     	Robot.drive.drive(0.0, 0.0);
     	Timer.delay(0.5);
-    	Robot.drive.drive(-0.5, 0.5);
+    	/*Robot.drive.drive(-0.5, 0.5);
     	Timer.delay(4.0);
     	Robot.drive.drive(0.0, 0.0);
     	Timer.delay(0.5);
     	Robot.drive.drive(0.7, -0.7);
     	Timer.delay(3.0);
-    	Robot.drive.drive(0.0, 0.0);
+    	Robot.drive.drive(0.0, 0.0);*/
     }
 
     // Called repeatedly when this Command is scheduled to run
