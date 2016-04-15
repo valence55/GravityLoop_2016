@@ -16,6 +16,7 @@ import org.usfirst.frc.team5004.robot.commands.AutoGyro;
 import org.usfirst.frc.team5004.robot.commands.AutoLowBar;
 import org.usfirst.frc.team5004.robot.commands.CameraFeed;
 import org.usfirst.frc.team5004.robot.commands.Dashboard;
+import org.usfirst.frc.team5004.robot.commands.DumbAuto;
 import org.usfirst.frc.team5004.robot.commands.LiftJoystick;
 import org.usfirst.frc.team5004.robot.commands.ResetGyro;
 import org.usfirst.frc.team5004.robot.commands.TankDrive;
@@ -61,6 +62,8 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Basic Auto", new AutoBasic());
         chooser.addObject("Gyro Auto", new AutoGyro());
         chooser.addObject("Low Bar Auto", new AutoLowBar());
+        chooser.addObject("stupid auto", new DumbAuto());
+        
         SmartDashboard.putData("Auto mode", chooser);
         
         Command dash = new Dashboard();

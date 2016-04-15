@@ -17,8 +17,8 @@ public class DumbAuto extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drive.drive(0.5, -0.5);
-    	Timer.delay(5.0);
+    	Robot.drive.drive(0.4, -0.4);
+    	Timer.delay(3.0);
     	Robot.drive.drive(0.0, 0.0);
     }
 
