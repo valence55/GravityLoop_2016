@@ -29,11 +29,11 @@ public class Arm extends Subsystem {
 	CANTalon m = new CANTalon(RobotMap.armMotor);
 	
 	public void joystickControl(){
-		m.set(Robot.oi.joySecondary.getY());
+		drive(Robot.oi.joySecondary.getY());
 	}
 	
 	public void drive(double i){
-		m.set(i);
+		m.set(-i);
 	}
 	
 	public void stop(){
